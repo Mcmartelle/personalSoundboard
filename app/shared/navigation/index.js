@@ -10,15 +10,13 @@ define([
                 return element[0].outerHTML;
             },
             link: function(scope, element, attr) {
+                element.css({
+                    cursor: 'pointer'
+                });
                 scope.load = function(url) {
                     $location.path(url);
                 };
             }
         };
     }]);
-    app.controller('navigationController', function($scope, $css) {
-        $css.bind({
-            href: 'app/components/core/header/index.css'
-        }, $scope);
-    });
 });
