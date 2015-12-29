@@ -1,0 +1,24 @@
+<div>
+	<form name="phraseForm" ng-controller="PhraseController as phraseCtrl" ng-submit="phraseCtrl.addPhrase(board.phrases)">
+
+		<h4>Add a Button</h4>
+		<fieldset class="form-group">
+			<textarea ng-model="phraseCtrl.phrase.speaktext" class="form-control" title="Text to Speech" placeholder="Type text here to hear..."></textarea>
+		</fieldset>
+		<fieldset class="form-group">
+			<span>Accent</span>
+			<select ng-controller="AccentController as accentCtrl"
+			ng-model="phraseCtrl.phrase.accent">
+			<option ng-repeat="accent in accentCtrl.accents | orderBy: 'name'" ng-value="accent.name" ng-bind="accent.name"></option>
+		</select>
+
+	</fieldset>
+	<fieldset class="form-group">
+		<button type="button" ng-click="play(phraseCtrl.phrase)">PLAY</button>
+		<button type="button" ng-click="pause()">PAUSE</button>
+		<button type="button" ng-click="resume()">RESUME</button>
+		<button type="button" ng-click="stop()">STOP</button>
+		<input type="submit" class="btn btn-primary pull-right" value="Add Button" />
+	</fieldset>
+</form>
+</div>
