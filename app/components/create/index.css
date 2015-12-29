@@ -1,0 +1,25 @@
+.create-page {
+    height: 100vh;
+}
+
+.sidebar {
+    overflow-y: auto;
+    height: 100%;
+    width: 25%;
+    background-color: #FFA558;
+    display: inline-block;
+}
+
+.work-area {
+    overflow: auto;
+    height: 100%;
+    width: 75%;
+    margin-left: -5px;
+    background-color: #54EAF1;
+    display: inline-block;
+}
+
+.item {
+    height: 75px;
+    width: 75px;
+}

@@ -1,5 +1,10 @@
 <header></header>
-<div ng-controller="CreateController as createCtrl">
-    <p navigate="/create">Hello World! You did it</p>
+<div class="create-page">
+    <div class="sidebar">
+        <div class="item" style="background-color: {{color}}" ng-repeat="color in createCtrl.colors" draggable>
+        </div>
+    </div>
+    <div class="work-area">
+    </div>
 </div>
 <footer></footer>

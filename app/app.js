@@ -19,17 +19,20 @@ define([
             .when("/home", angularAMD.route({
                 templateUrl: compLoc + 'home/index.html',
                 controllerUrl: compLoc + 'home/index.js',
-                controller: 'HomeController'
+                controller: 'HomeController',
+                controllerAs: 'HomeCtrl'
             }))
             .when("/soundboard", angularAMD.route({
                 templateUrl: compLoc + 'soundboard/index.html',
                 controllerUrl: compLoc + 'soundboard/index.js',
-                controller: 'SoundboardController'
+                controller: 'SoundboardController',
+                controllerAs: 'soundboardCtrl'
             }))
             .when("/create", angularAMD.route({
                 templateUrl: compLoc + 'create/index.html',
                 controllerUrl: compLoc + 'create/index.js',
-                controller: 'CreateController'
+                controller: 'CreateController',
+                controllerAs: 'createCtrl'
             }))
             .otherwise({
                 redirectTo: '/home'
