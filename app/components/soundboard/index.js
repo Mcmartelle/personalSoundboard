@@ -7,7 +7,7 @@ require.config({
     }
 });
 
-define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice', 'angular-css'], function(app) {
+define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice'], function(app) {
 
     app.controller('SoundboardController', function(navigationService, $scope, $css) {
         $css.bind({

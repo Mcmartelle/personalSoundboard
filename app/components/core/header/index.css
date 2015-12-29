@@ -1,0 +1,8 @@
+div.header {
+    background-color: blue;
+    outline: red 3px dashed;
+}
+
+h1.header {
+    float: right;
+}

@@ -15,7 +15,8 @@ require.config({
         'angular-route': ['angular'],
         'angular-material': ['angular'], //, 'angular-animate', 'angular-aria'],
         'angular-animate': ['angular'],
-        'angular-aria': ['angular']
+        'angular-aria': ['angular'],
+        'angular-css': ['angular']
     },
     deps: ['app']
 });
