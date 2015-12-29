@@ -1,8 +1,8 @@
 div.header {
-    background-color: blue;
-    outline: red 3px dashed;
+    border: black 3px solid;
 }
 
 h1.header {
-    float: right;
+    display: inline-block;
+    margin: 0 20px;
 }
