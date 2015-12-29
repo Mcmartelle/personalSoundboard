@@ -1,13 +1,13 @@
 require.config({
     paths: {
-        'navigation-service': 'app/shared/navigation-service'
+        'navigation': 'app/shared/navigation/index'
     }
 });
 define([
     'app',
-    'navigation-service'
+    'navigation'
 ], function(app) {
-    app.directive('header', function(navigationService) {
+    app.directive('header', function() {
         return {
             restrict: 'E',
             replace: true,
@@ -17,13 +17,9 @@ define([
             controllerAs: 'headerCtrl'
         };
     });
-    app.controller('headerController', function(navigationService, $scope, $css) {
+    app.controller('headerController', function($scope, $css) {
         $css.bind({
             href: 'app/components/core/header/index.css'
         }, $scope);
-
-        this.load = function(url) {
-            navigationService.load(url);
-        };
     });
 });
