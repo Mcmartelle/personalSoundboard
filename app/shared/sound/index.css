@@ -1,0 +1,19 @@
+.btnPlay {
+    background-color: green;
+    color: yellow;
+}
+
+.btnPause {
+    background-color: yellow;
+    color: blue;
+}
+
+.btnResume {
+    background-color: blue;
+    color: red;
+}
+
+.btnStop {
+    background-color: red;
+    color: green;
+}

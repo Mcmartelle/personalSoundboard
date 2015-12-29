@@ -1,8 +1,7 @@
 <div>
-	<p ng-bind="phrase.accent"></p>
-	<button type="button" class="btn btn-primary btn-lg" ng-click="play(phrase)" ng-bind="phrase.speaktext"></button>
-	<button type="button" ng-click="pause()">PAUSE</button>
-	<button type="button" ng-click="resume()">RESUME</button>
-
-	<button type="button" class="btn btn-lg" ng-click="stop()">STOP</button>
+    <p ng-bind="phrase.accent"></p>
+    <md-button class="btnPlay" aria-label="play" ng-click="play(phrase)" ng-bind="phrase.speaktext"></md-button>
+    <md-button class="btnPause" aria-label="pause" ng-click="pause()">PAUSE</md-button>
+    <md-button class="btnResume" aria-label="resume" ng-click="resume()">RESUME</md-button>
+    <md-button class="btnStop" aria-label="stop" ng-click="stop()">STOP</md-button>
 </div>
