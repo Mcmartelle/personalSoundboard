@@ -7,8 +7,13 @@ require.config({
     }
 });
 
-define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice'], function(app) {
-    app.controller('SoundboardController', function(navigationService) {
+define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice', 'angular-css'], function(app) {
+
+    app.controller('SoundboardController', function(navigationService, $scope, $css) {
+        $css.bind({
+            href: 'app/components/soundboard/index.css'
+        }, $scope);
+
         this.load = function(url) {
             navigationService.load(url);
         };

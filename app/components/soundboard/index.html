@@ -8,16 +8,16 @@
                 <div class="list-group-item" ng-repeat="phrase in board.phrases">
                     <div ng-controller="SoundController as sound">
                         <p ng-bind="phrase.accent"></p>
-                        <button type="button" class="btn btn-primary btn-lg" ng-click="sound.play(phrase)" ng-bind="phrase.speaktext"><span class="glyphicon glyphicon-play"></span></button>
-                        <button type="button" class="btn btn-lg" ng-click="sound.stop()">STOP</button>
+                        <md-button class="btnPlay" ng-click="sound.play(phrase)">{{phrase.speaktext}}<span class="glyphicon glyphicon-play"></span></md-button>
+                        <md-button class="btnStop" ng-click="sound.stop()">STOP</md-button>
                     </div>
                 </div>
             </div>
             <form name="phraseForm" ng-controller="PhraseController as phraseCtrl" ng-submit="phraseCtrl.addPhrase(board.phrases)">
                 <blockquote ng-controller="SoundController as sound">
                     <p ng-bind="phraseCtrl.phrase.accent.name"></p>
-                    <button type="button" class="btn btn-primary btn-lg" ng-click="sound.play(phraseCtrl.phrase)" ng-bind="phraseCtrl.phrase.speaktext"></button>
-                    <button type="button" class="btn btn-lg" ng-click="sound.stop()">STOP</button>
+                    <md-button class="btnPlay" ng-click="sound.play(phraseCtrl.phrase)" ng-bind="phraseCtrl.phrase.speaktext"></md-button>
+                    <md-button class="btnStop" ng-click="sound.stop()">STOP</md-button>
                 </blockquote>
                 <h4>Add a Button</h4>
                 <fieldset class="form-group">
