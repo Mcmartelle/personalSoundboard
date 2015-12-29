@@ -2,7 +2,7 @@ define([
     'angularAMD',
     'angular-route',
 ], function(angularAMD) {
-    var app = angular.module("CardsApp", ['ngRoute']);
+    var app = angular.module("SoundboardApp", ['ngRoute']);
 
     app.config(function($routeProvider) {
         var compLoc = 'app/components/';
@@ -14,10 +14,11 @@ define([
                 controllerUrl: compLoc + 'home/index.js',
                 controller: 'HomeController'
             }))
-            // .when("/pictures", angularAMD.route({
-            //     templateUrl: 'views/pictures.html',
-            //     controllerUrl: 'controller/pictures_ctrl',
-            // }))
+            .when("/soundboard", angularAMD.route({
+                templateUrl: compLoc + 'soundboard/index.html',
+                controllerUrl: compLoc + 'soundboard/index.js',
+                controller: 'SoundboardController'
+            }))
             .otherwise({
                 redirectTo: '/home'
             });
