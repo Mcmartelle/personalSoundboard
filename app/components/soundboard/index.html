@@ -2,37 +2,14 @@
 <div ng-controller="SoundboardController as soundboardCtrl">
     <p ng-click="soundboardCtrl.load('/home')">Now at soundboard</p>
     <div ng-controller="BoardController as board">
-        <div>
+        <div class="container">
             <h1>Custom Soundboard</h1>
             <div class="list-group">
                 <div class="list-group-item" ng-repeat="phrase in board.phrases">
-                    <div ng-controller="SoundController as sound">
-                        <p ng-bind="phrase.accent"></p>
-                        <md-button class="btnPlay" ng-click="sound.play(phrase)">{{phrase.speaktext}}<span class="glyphicon glyphicon-play"></span></md-button>
-                        <md-button class="btnStop" ng-click="sound.stop()">STOP</md-button>
-                    </div>
+                    <sound></sound>
                 </div>
+                <sound type="create"></sound>
             </div>
-            <form name="phraseForm" ng-controller="PhraseController as phraseCtrl" ng-submit="phraseCtrl.addPhrase(board.phrases)">
-                <blockquote ng-controller="SoundController as sound">
-                    <p ng-bind="phraseCtrl.phrase.accent.name"></p>
-                    <md-button class="btnPlay" ng-click="sound.play(phraseCtrl.phrase)" ng-bind="phraseCtrl.phrase.speaktext"></md-button>
-                    <md-button class="btnStop" ng-click="sound.stop()">STOP</md-button>
-                </blockquote>
-                <h4>Add a Button</h4>
-                <fieldset class="form-group">
-                    <textarea ng-model="phraseCtrl.phrase.speaktext" class="form-control" title="Text to Speech" placeholder="Type text here to hear..."></textarea>
-                </fieldset>
-                <fieldset class="form-group">
-                    <span>Accent</span>
-                    <select ng-controller="AccentController as accentCtrl" ng-options="accent as accent.name for accent in accentCtrl.accents track by accent.name" ng-model="phraseCtrl.phrase.accent">
-                        <!-- 				<option ng-repeat="accent in accentCtrl.accents" value="accent.name" ng-bind="accent.name"></option> -->
-                    </select>
-                </fieldset>
-                <fieldset class="form-group">
-                    <input type="submit" class="btn btn-primary pull-right" value="Add Button" />
-                </fieldset>
-            </form>
         </div>
     </div>
 </div>
