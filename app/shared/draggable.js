@@ -12,8 +12,8 @@ define([
 
                 element.css({
                     position: 'relative',
-                    border: '1px solid red',
-                    backgroundColor: 'lightgrey',
+                    // border: '1px solid red',
+                    // backgroundColor: 'lightgrey',
                     cursor: 'pointer'
                 });
 
