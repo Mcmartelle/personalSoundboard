@@ -27,7 +27,7 @@ define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice', 'an
 
     app.controller('SoundController', function() {
         this.play = function(text) {
-            responsiveVoice.speak(text.speaktext, text.accent);
+            responsiveVoice.speak(text.speaktext, text.accent); //, {pitch: 2});
         };
 
         this.stop = function() {
@@ -57,5 +57,13 @@ define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice', 'an
         tab: 'Test Category',
         speaktext: 'Yes Yes it is working!',
         accent: 'US English Female'
+    }, {
+        tab: 'Test Category',
+        speaktext: 'I am so very Japanese. So Japanese.',
+        accent: 'Japanese Female'
+    }, {
+        tab: 'Test Category',
+        speaktext: 'Luna you are shit.',
+        accent: 'UK English Female'
     }];
 });
