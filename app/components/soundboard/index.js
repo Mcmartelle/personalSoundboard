@@ -3,11 +3,12 @@ require.config({
         'header': 'app/components/core/header/index',
         'footer': 'app/components/core/footer/index',
         'navigation-service': 'app/shared/navigation-service',
-        'responsive-voice': 'https://code.responsivevoice.org/responsivevoice'
+        'responsive-voice': 'https://code.responsivevoice.org/responsivevoice',
+        'sound': 'app/shared/sound/index'
     }
 });
 
-define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice'], function(app) {
+define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice', 'sound'], function(app) {
     app.controller('SoundboardController', function(navigationService) {
         this.load = function(url) {
             navigationService.load(url);
@@ -16,7 +17,7 @@ define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice'], fu
 
     app.controller('BoardController', function() {
         this.phrases = testdb;
-
+        this.accents = responsiveVoice.getVoices();
         console.log(this.phrases);
     });
 
@@ -34,7 +35,6 @@ define(['app', 'header', 'footer', 'navigation-service', 'responsive-voice'], fu
         this.phrase = {};
 
         this.addPhrase = function(phrases) {
-            this.phrase.accent = this.phrase.accent.name;
             phrases.push(this.phrase);
             this.phrase = {};
         };
