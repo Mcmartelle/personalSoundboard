@@ -1,8 +1,11 @@
 define([
     'angularAMD',
     'angular-route',
+    'angular-animate',
+    'angular-aria',
+    'angular-material'
 ], function(angularAMD) {
-    var app = angular.module("SoundboardApp", ['ngRoute']);
+    var app = angular.module("SoundboardApp", ['ngRoute', 'ngMaterial']);
 
     app.config(function($routeProvider) {
         var compLoc = 'app/components/';
