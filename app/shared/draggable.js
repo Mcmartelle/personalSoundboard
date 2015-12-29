@@ -19,6 +19,7 @@ define([
 
                 element.on('mousedown', function(event) {
                     // Prevent default dragging of selected content
+                    event.stopPropagation();
                     event.preventDefault();
                     startX = event.pageX - x;
                     startY = event.pageY - y;

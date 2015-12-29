@@ -1,11 +1,13 @@
 require.config({
     paths: {
-        'navigation': 'app/shared/navigation/index'
+        'navigation': 'app/shared/navigation/index',
+        'draggable': 'app/shared/draggable'
     }
 });
 define([
     'app',
-    'navigation'
+    'navigation',
+    'draggable'
 ], function(app) {
     app.directive('header', function() {
         return {
