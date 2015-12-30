@@ -18,7 +18,7 @@ define(['app'], function(app) {
         scope.livePhrase = {};
 
         scope.addPhrase = function(phrases) {
-          phrases.push(this.phrase);
+          phrases.push(scope.livePhrase);
           scope.livePhrase = {};
         };
 
