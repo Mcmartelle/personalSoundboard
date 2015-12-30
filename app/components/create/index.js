@@ -28,6 +28,5 @@ define([
         for (var i = 0; i < 3; i++) {
             this.colors.push(this.getRandomColor());
         }
-        console.log(this.colors)
     });
 });

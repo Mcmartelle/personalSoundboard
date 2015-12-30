@@ -1,31 +1,28 @@
 {
-    "name": "cards",
-    "authors": [
-        "Daniel Romero <daniel.romero@aofl.com>"
-    ],
-    "description": "test project for image card idea",
-    "main": "index.html",
-    "moduleType": [
-        "node"
-    ],
-    "license": "MIT",
-    "homepage": "",
-    "private": true,
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "angularAMD": "~0.2.1",
-        "angular-css": "~1.0.7",
-        "angular": ">= 1.3.0",
-        "angular-route": "~1.4.8",
-        "requirejs": "latest"
-    },
-   "resolutions": {
-       "angular": "^1.4.8"
-   }
+  "name": "PersonalSoundboard",
+  "main": "index.html",
+  "homepage": "https://github.com/Mcmartelle/personalSoundboard",
+  "authors": [
+    "Matt Martelle"
+  ],
+  "description": "a personal soundboard",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-css": "~1.0.7",
+    "angular-material": "~1.0.1",
+    "angular-route": "~1.4.8",
+    "angularAMD": "~0.2.1"
+  },
+  "resolutions": {
+    "angular": "^1.4.8"
+  }
 }
