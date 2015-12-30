@@ -23,30 +23,9 @@ define([
 
     app.controller('BoardController', function() {
         this.phrases = testdb;
-    });
-
-    app.controller('SoundController', function() {
-        this.play = function(text) {
-            responsiveVoice.speak(text.speaktext, text.accent); //, {pitch: 2});
-        };
-
-        this.stop = function() {
-            responsiveVoice.cancel();
-        };
-    });
-
-    app.controller('PhraseController', function() {
-        this.phrase = {};
-
-        this.addPhrase = function(phrases) {
-            phrases.push(this.phrase);
-            this.phrase = {};
-        };
-    });
-
-    app.controller('AccentController', function() {
         this.accents = responsiveVoice.getVoices();
     });
+
 
     var testdb = [{
         tab: 'Test Category',
