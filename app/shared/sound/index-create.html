@@ -2,7 +2,7 @@
   <form name="phraseForm" ng-submit="addPhrase(board.phrases)">
     <h4>Add a Button</h4>
     <fieldset class="form-group">
-      <textarea ng-model="livePhrase.speaktext" class="form-control" title="Text to Speech" placeholder="Type text here to hear..."></textarea>
+      <textarea ng-keypress="($event.which === 13)?play(livePhrase):0" ng-model="livePhrase.speaktext" class="form-control" title="Text to Speech" placeholder="Type text here to hear..."></textarea>
     </fieldset>
     <fieldset class="form-group">
       <span>Accent</span>
