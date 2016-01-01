@@ -15,15 +15,21 @@ define(['app'], function(app) {
       },
       link: function(scope, element, attr) {
 
-        scope.livePhrase = {};
+        scope.livePhrase = {
+          //default accent for responsiveVoiceJS
+          accent: "UK English Female"
+        };
 
         scope.addPhrase = function(phrases) {
           phrases.push(scope.livePhrase);
-          scope.livePhrase = {};
+          scope.livePhrase = {
+            //default accent for responsiveVoiceJS
+            accent: "UK English Female"
+          };
         };
 
         scope.play = function(text) {
-          responsiveVoice.speak(text.speaktext, text.accent);
+          responsiveVoice.speak(text.speaktext, text.accent, text.options);
         };
 
         scope.pause = function() {

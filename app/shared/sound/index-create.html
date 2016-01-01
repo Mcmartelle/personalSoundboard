@@ -1,21 +1,74 @@
-<div>
-  <form name="phraseForm" ng-submit="addPhrase(board.phrases)">
-    <h4>Add a Button</h4>
-    <fieldset class="form-group">
-      <textarea ng-keypress="($event.which === 13)?play(livePhrase):0" ng-model="livePhrase.speaktext" class="form-control" title="Text to Speech" placeholder="Type text here to hear..."></textarea>
-    </fieldset>
-    <fieldset class="form-group">
-      <span>Accent</span>
-      <select ng-model="livePhrase.accent">
-        <option ng-repeat="accent in board.accents | orderBy: 'name'" ng-value="accent.name" ng-bind="accent.name"></option>
-      </select>
-    </fieldset>
-    <fieldset class="form-group">
-      <md-button class="btnPlay" aria-label="play" ng-click="play(livePhrase)">PLAY</md-button>
-      <md-button class="btnPause" aria-label="pause" ng-click="pause()">PAUSE</md-button>
-      <md-button class="btnResume" aria-label="resume" ng-click="resume()">RESUME</md-button>
-      <md-button class="btnStop" aria-label="stop" ng-click="stop()">STOP</md-button>
-      <md-button class="btnAdd" aria-label="add button" type=submit>ADD BUTTON</md-button>
-    </fieldset>
-  </form>
+<div layout="column" ng-cloak>
+  <md-content layout-padding>
+    <form name="phraseForm" ng-submit="addPhrase(board.phrases)">
+      <h4>Add a Button</h4>
+      <md-input-container class="md-block">
+        <label>Text to Speech</label>
+        <textarea ng-keypress="($event.which === 13)?play(livePhrase):0" required ng-model="livePhrase.speaktext" class="form-control"></textarea>
+      </md-input-container>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block">
+          <label>Accent</label>
+          <md-select ng-model="livePhrase.accent">
+            <md-option ng-repeat="accent in board.accents | orderBy: 'name'" ng-value="accent.name" ng-bind="accent.name"></md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Pitch</label>
+          <input type="number" name="pitch" ng-model="livePhrase.options.pitch" min="0" max="2" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.1" />
+          <div ng-messages="">
+            <!-- ng-message weren't hiding automatically. reverted to ng-show. kept ng-messages for styling.  -->
+            <div ng-show="phraseForm.pitch.$error.min">
+              Please choose a value no less than 0
+            </div>
+            <div ng-show="phraseForm.pitch.$error.pattern">
+              No more than 2 decimal places
+            </div>
+            <div ng-show="phraseForm.pitch.$error.max">
+              Please choose a value no greater than 2
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Rate</label>
+          <input type="number" name="rate" ng-model="livePhrase.options.rate" min="0" max="1.5" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.1" />
+          <div ng-messages="">
+            <!-- ng-message weren't hiding automatically. reverted to ng-show. kept ng-messages for styling.  -->
+            <div ng-show="phraseForm.rate.$error.min">
+              Please choose a value no less than 0
+            </div>
+            <div ng-show="phraseForm.rate.$error.pattern">
+              No more than 2 decimal places
+            </div>
+            <div ng-show="phraseForm.rate.$error.max">
+              Please choose a value no greater than 1.5
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Volume</label>
+          <input type="number" name="volume" ng-model="livePhrase.options.volume" min="0" max="1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.1" />
+          <div ng-messages="">
+            <!-- ng-message weren't hiding automatically. reverted to ng-show. kept ng-messages for styling.  -->
+            <div ng-show="phraseForm.volume.$error.min">
+              Please choose a value no less than 0
+            </div>
+            <div ng-show="phraseForm.volume.$error.pattern">
+              No more than 2 decimal places
+            </div>
+            <div ng-show="phraseForm.volume.$error.max">
+              Please choose a value no greater than 1
+            </div>
+          </div>
+        </md-input-container>
+      </div>
+      <md-input-container class="md-block">
+        <md-button class="btnPlay" aria-label="play" ng-click="play(livePhrase)">PLAY</md-button>
+        <md-button class="btnPause" aria-label="pause" ng-click="pause()">PAUSE</md-button>
+        <md-button class="btnResume" aria-label="resume" ng-click="resume()">RESUME</md-button>
+        <md-button class="btnStop" aria-label="stop" ng-click="stop()">STOP</md-button>
+        <md-button class="btnAdd" aria-label="add button" type=submit>ADD BUTTON</md-button>
+      </md-input-container>
+    </form>
+  </md-content>
 </div>

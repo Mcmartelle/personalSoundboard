@@ -1,16 +1,16 @@
 <header></header>
 <div>
-    <p navigation="/home">Now at soundboard</p>
-    <div ng-controller="BoardController as board">
-        <div class="container">
-            <h1>Custom Soundboard</h1>
-            <div class="list-group">
-                <div class="list-group-item" ng-repeat="phrase in board.phrases">
-                    <sound></sound>
-                </div>
-                <sound type="create"></sound>
-            </div>
+  <p navigation="/home">Now at soundboard</p>
+  <div ng-controller="BoardController as board">
+    <div class="container">
+      <h1>Custom Soundboard</h1>
+      <div class="list-group">
+        <div class="list-group-item" ng-repeat="phrase in board.phrases">
+          <sound></sound>
         </div>
+        <sound type="create"></sound>
+      </div>
     </div>
+  </div>
 </div>
 <footer></footer>
