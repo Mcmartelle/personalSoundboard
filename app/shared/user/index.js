@@ -47,12 +47,38 @@ define(['app'], function(app) {
     $css.bind({
       href: 'app/shared/user/index.css'
     }, $scope);
+
+    this.test = function() {
+      console.log("in test");
+      $http({
+        url: 'https://127.0.0.1:1337/api/data',
+        method: "GET",
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        }
+      }).then(
+        function successCallback(response) {
+          console.log("success");
+          console.log(response);
+
+        },
+        function errorCallback(response) {
+          console.log("error");
+          console.log(response);
+        });
+    };
+
     this.register = function(user) {
       console.log(user);
       $http({
-        url: 'http://127.0.0.1:1337/api/users',
+        url: 'https://127.0.0.1:1337/register',
         method: "POST",
-        data: user
+        data: user,
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        }
       }).then(
         function successCallback(response) {
           console.log("success");
@@ -68,9 +94,13 @@ define(['app'], function(app) {
     this.login = function(user) {
       console.log(user);
       $http({
-        url: 'http://127.0.0.1:1337/login',
+        url: 'https://127.0.0.1:1337/login',
         method: "POST",
-        data: user
+        data: user,
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        }
       }).then(
         function successCallback(response) {
           console.log("success");
