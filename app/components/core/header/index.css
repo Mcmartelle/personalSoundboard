@@ -1,8 +1,8 @@
 div.header {
-    border: black 3px solid;
+  background-color: #FFA557;
 }
 
 h1.header {
-    display: inline-block;
-    margin: 0 20px;
+  display: inline-block;
+  margin: 0 20px;
 }

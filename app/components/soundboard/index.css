@@ -1,7 +1,11 @@
+md-tabs {
+  background-color: #FFC99A;
+}
+
 .btnPlay {
-    background-color: green;
+  background-color: green;
 }
 
 .btnStop {
-    background-color: red;
+  background-color: red;
 }

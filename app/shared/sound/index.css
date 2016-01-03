@@ -1,24 +1,37 @@
+.btn {
+  color: black;
+  font-weight: bolder;
+}
+
+md-card {
+  background-color: #54EAF1;
+}
+
+form {
+  background-color: #FFC99A;
+}
+
+.md-fab {
+  background-color: #54EAF1;
+}
+
 .btnPlay {
-    background-color: green;
-    color: yellow;
+  background-color: #F2FEFE;
 }
 
 .btnPause {
-    background-color: yellow;
-    color: blue;
+  background-color: #FFA557;
 }
 
 .btnResume {
-    background-color: blue;
-    color: red;
+  background-color: #00BAC3;
 }
 
 .btnStop {
-    background-color: red;
-    color: green;
+  background-color: #FF7600;
 }
 
 .btnAdd {
-	background-color: orange;
-	color: purple;
+  background-color: black;
+  color: #94F0F4;
 }

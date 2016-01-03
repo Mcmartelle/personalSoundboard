@@ -23,6 +23,7 @@ define([
 
   app.controller('BoardController', function() {
     this.phrases = testdb;
+    this.user = testdb2;
     this.accents = responsiveVoice.getVoices();
   });
 
@@ -49,3 +50,90 @@ define([
     accent: 'UK English Female'
   }];
 });
+
+var testdb2 = {
+  email: "test@test.com",
+  first_name: "test@test.com",
+  password: "test@test.com",
+  boards: [{
+    title: "Cool Board",
+    position: 1,
+    sounds: [{
+      position: 1,
+      accent: 'UK English Female',
+      speaktext: 'testing testing 1 2 5',
+      options: {
+        pitch: 1,
+        rate: 1,
+        volume: 1
+      }
+    }, {
+      position: 2,
+      accent: 'Japanese Female',
+      speaktext: 'hello hello hello',
+      options: {
+        pitch: 1.5,
+        rate: 1.5,
+        volume: 1
+      }
+    }, {
+      position: 3,
+      accent: 'UK English Female',
+      speaktext: 'testing testing 1 2 5',
+      options: {
+        pitch: 1,
+        rate: 1,
+        volume: 1
+      }
+    }, {
+      position: 4,
+      accent: 'Japanese Female',
+      speaktext: 'hello hello hello',
+      options: {
+        pitch: 1.5,
+        rate: 1.5,
+        volume: 1
+      }
+    }, {
+      position: 5,
+      accent: 'UK English Female',
+      speaktext: 'testing testing 1 2 5',
+      options: {
+        pitch: 1,
+        rate: 1,
+        volume: 1
+      }
+    }, {
+      position: 6,
+      accent: 'Japanese Female',
+      speaktext: 'hello hello hello',
+      options: {
+        pitch: 1.5,
+        rate: 1.5,
+        volume: 1
+      }
+    }]
+  }, {
+    title: "Rad Board",
+    position: 2,
+    sounds: [{
+      position: 1,
+      accent: 'UK English Female',
+      speaktext: 'muwahaha 1 2 5',
+      options: {
+        pitch: 1,
+        rate: 1,
+        volume: 1
+      }
+    }, {
+      position: 2,
+      accent: 'Japanese Female',
+      speaktext: 'hello this is an accent',
+      options: {
+        pitch: 1.5,
+        rate: 1.5,
+        volume: 1
+      }
+    }]
+  }]
+};

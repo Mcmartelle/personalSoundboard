@@ -1,15 +1,21 @@
 <header></header>
-<div>
-  <div ng-controller="BoardController as board">
-    <div class="container">
-      <h1>Custom Soundboard</h1>
-      <div class="list-group">
-        <div class="list-group-item" ng-repeat="phrase in board.phrases">
-          <sound></sound>
-        </div>
-        <sound type="create"></sound>
-      </div>
-    </div>
-  </div>
+<div ng-controller="BoardController as boardCtrl">
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab ng-repeat="board in boardCtrl.user.boards | orderBy : 'position'">
+        <md-tab-label>{{board.title}}</md-tab-label>
+        <md-tab-body>
+          <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column">
+            <div flex="50" flex-sm="100" flex-xs="100" layout="column" ng-repeat="sound in board.sounds | orderBy : 'position'">
+              <sound></sound>
+            </div>
+          </md-content>
+          <md-content>
+            <sound type="create"></sound>
+          </md-content>
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+  </md-content>
 </div>
 <footer></footer>

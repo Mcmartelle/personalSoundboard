@@ -1,7 +1,22 @@
-<div>
-  <p ng-bind="phrase.accent"></p>
-  <md-button class="btnPlay" aria-label="play" ng-click="play(phrase)" ng-bind="phrase.speaktext"></md-button>
-  <md-button class="btnPause" aria-label="pause" ng-click="pause()">PAUSE</md-button>
-  <md-button class="btnResume" aria-label="resume" ng-click="resume()">RESUME</md-button>
-  <md-button class="btnStop" aria-label="stop" ng-click="stop()">STOP</md-button>
-</div>
+<md-card>
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline" ng-bind="sound.speaktext"></span>
+      <span class="md-title" ng-bind="sound.accent"></span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <span ng-if="sound.options.pitch">Pitch <md-button aria-label="pitch" class="md-fab md-warn"><span class="md-title" ng-bind="sound.options.pitch"></span></md-button>
+    </span>
+    <span ng-if="sound.options.rate">Rate <md-button aria-label="rate"class="md-fab md-warn"><span class="md-title" ng-bind="sound.options.rate"></span></md-button>
+    </span>
+    <span ng-if="sound.options.volume">Volume <md-button aria-label="volume" class="md-fab md-warn"><span class="md-title" ng-bind="sound.options.volume"></span></md-button>
+    </span>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button class="btn btnPlay" aria-label="play" ng-click="play(sound)">PLAY</md-button>
+    <md-button class="btn btnPause" aria-label="pause" ng-click="pause()">PAUSE</md-button>
+    <md-button class="btn btnResume" aria-label="resume" ng-click="resume()">RESUME</md-button>
+    <md-button class="btn btnStop" aria-label="stop" ng-click="stop()">STOP</md-button>
+  </md-card-actions>
+</md-card>
