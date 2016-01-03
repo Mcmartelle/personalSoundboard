@@ -21,34 +21,53 @@ define([
     }, $scope);
   });
 
-  app.controller('BoardController', function() {
-    this.phrases = testdb;
-    this.user = testdb2;
+  app.controller('BoardController', function($scope, $http) {
+    $scope.user = testdb2;
     this.accents = responsiveVoice.getVoices();
+    $scope.newBoard = {};
+
+    $scope.addBoard = function() {
+      console.log($scope.user.boards);
+      var maxPosition = 0;
+      for (idx in $scope.user.boards) {
+        if ($scope.user.boards[idx].position > maxPosition) {
+          maxPosition = $scope.user.boards[idx].position;
+        }
+      }
+      $scope.newBoard.position = maxPosition + 1;
+      console.log($scope.newBoard);
+      console.log($scope.user.boards);
+
+
+      $http({
+        url: 'https://127.0.0.1:1337/api/users/' + this.user.email + '/boards',
+        method: "POST",
+        withCredentials: true,
+        data: $scope.newBoard,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        }
+      }).then(
+        function successCallback(response) {
+          console.log("success");
+          console.log(response);
+          $scope.newBoard.sounds = [];
+          testdb2.boards.push($scope.newBoard);
+          $scope.newBoard = {};
+        },
+        function errorCallback(response) {
+          console.log("error");
+          console.log(response);
+        });
+    };
+
+    $scope.saveBoards = function() {
+      // update user in database 
+
+    };
+
   });
 
-
-  var testdb = [{
-    tab: 'Test Category',
-    speaktext: 'hahahahah',
-    accent: 'UK English Female',
-  }, {
-    tab: 'Test Category',
-    speaktext: 'Yes Yes it is working!',
-    accent: 'US English Female',
-    options: {
-      pitch: 0.1,
-      rate: 1.5
-    }
-  }, {
-    tab: 'Test Category',
-    speaktext: 'I am so very Japanese. So Japanese.',
-    accent: 'Japanese Female'
-  }, {
-    tab: 'Test Category',
-    speaktext: 'Luna you are shit.',
-    accent: 'UK English Female'
-  }];
 });
 
 var testdb2 = {

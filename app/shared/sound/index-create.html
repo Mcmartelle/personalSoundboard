@@ -1,7 +1,7 @@
 <div layout="column" ng-cloak>
   <md-content layout-padding>
-    <form name="phraseForm" ng-submit="addPhrase(board.sounds)">
-      <h4 class="md-title">Add a Button</h4>
+    <form name="phraseForm" ng-submit="addPhrase(livePhrase, board.sounds)">
+      <h4 class="md-title">Add a Text to Speech Sound</h4>
       <md-input-container class="md-block">
         <label>Text to Speech</label>
         <textarea ng-keypress="($event.which === 13)?play(livePhrase):0" required ng-model="livePhrase.speaktext" class="form-control"></textarea>
@@ -67,7 +67,7 @@
         <md-button class="btn btnPause" aria-label="pause" ng-click="pause()">PAUSE</md-button>
         <md-button class="btn btnResume" aria-label="resume" ng-click="resume()">RESUME</md-button>
         <md-button class="btn btnStop" aria-label="stop" ng-click="stop()">STOP</md-button>
-        <md-button class="btn btnAdd" aria-label="add button" type=submit>ADD BUTTON</md-button>
+        <md-button class="btn btnAdd" aria-label="add button" type=submit>ADD SOUND</md-button>
       </md-input-container>
     </form>
   </md-content>

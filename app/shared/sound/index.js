@@ -1,4 +1,16 @@
-define(['app'], function(app) {
+require.config({
+  paths: {
+    'responsive-voice': 'https://code.responsivevoice.org/responsivevoice',
+    // 'soundboard': 'app/components/soundboard/index'
+  }
+});
+
+define([
+  'app',
+  'responsive-voice',
+  // 'soundboard'
+
+], function(app) {
   app.directive('sound', function() {
     return {
       restrict: 'E',
@@ -20,12 +32,13 @@ define(['app'], function(app) {
           accent: "UK English Female"
         };
 
-        scope.addPhrase = function(phrases) {
-          phrases.push(scope.livePhrase);
+        scope.addPhrase = function(phrase, sounds) {
+          sounds.push(phrase);
           scope.livePhrase = {
             //default accent for responsiveVoiceJS
             accent: "UK English Female"
           };
+          return sounds;
         };
 
         scope.play = function(text) {

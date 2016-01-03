@@ -2,7 +2,7 @@
 <div ng-controller="BoardController as boardCtrl">
   <md-content>
     <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab ng-repeat="board in boardCtrl.user.boards | orderBy : 'position'">
+      <md-tab ng-repeat="board in user.boards | orderBy : 'position'">
         <md-tab-label>{{board.title}}</md-tab-label>
         <md-tab-body>
           <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column">
@@ -11,11 +11,27 @@
             </div>
           </md-content>
           <md-content>
+            <md-content layout-padding class="rmv" layout="row" layout-align="center center">
+              <md-button class="btn btnAdd" aria-label="add button" ng-click="removeBoard()">REMOVE CURRENT BOARD</md-button>
+            </md-content>
             <sound type="create"></sound>
           </md-content>
         </md-tab-body>
       </md-tab>
     </md-tabs>
+    <md-content layout-padding>
+      <form ng-submit="addBoard()">
+        <h4 class="md-title">Add a Soundboard</h4>
+        <md-input-container class="md-block">
+          <label>New Soundboard Title</label>
+          <input type="text" required ng-model="newBoard.title" />
+        </md-input-container>
+        <md-input-container layout="row" layout-align="space-between none">
+          <md-button class="btn btnAdd" aria-label="add button" type=submit>ADD BOARD</md-button>
+          <md-button class="btn btnAdd" aria-label="add button" ng-click="saveBoards()">SAVE ALL BOARDS</md-button>
+        </md-input-container>
+      </form>
+    </md-content>
   </md-content>
 </div>
 <footer></footer>
