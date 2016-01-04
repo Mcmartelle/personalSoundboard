@@ -21,10 +21,20 @@ define([
     }, $scope);
   });
 
-  app.controller('BoardController', function($scope, $http) {
+  app.controller('BoardController', function($scope, $http, $rootScope) {
+
     $scope.user = testdb2;
+    if ($rootScope.user) {
+      console.log("loading from root");
+      $scope.user = $rootScope.user;
+    }
+    console.log($scope.user);
+    console.log("once");
+
     this.accents = responsiveVoice.getVoices();
     $scope.newBoard = {};
+
+    // $scope.fetchUser();
 
     $scope.addBoard = function() {
       console.log($scope.user.boards);
@@ -35,25 +45,32 @@ define([
         }
       }
       $scope.newBoard.position = maxPosition + 1;
-      console.log($scope.newBoard);
-      console.log($scope.user.boards);
+      $scope.newBoard.sounds = [];
+      $scope.user.boards.push($scope.newBoard);
+      $scope.newBoard = {};
+      console.log($rootScope.user);
 
+    };
+
+    $scope.removeBoard = function(board) {
+      var index = $scope.user.boards.indexOf(board);
+      $scope.user.boards.splice(index, 1);
+    };
+
+    $scope.saveBoards = function() {
 
       $http({
-        url: 'https://127.0.0.1:1337/api/users/' + this.user.email + '/boards',
-        method: "POST",
+        url: 'https://127.0.0.1:1337/api/users/' + $scope.user.email,
+        method: "PUT",
+        data: $scope.user,
         withCredentials: true,
-        data: $scope.newBoard,
         headers: {
           'Content-Type': 'application/json; charset=utf-8'
         }
       }).then(
         function successCallback(response) {
           console.log("success");
-          console.log(response);
-          $scope.newBoard.sounds = [];
-          testdb2.boards.push($scope.newBoard);
-          $scope.newBoard = {};
+
         },
         function errorCallback(response) {
           console.log("error");
@@ -61,26 +78,21 @@ define([
         });
     };
 
-    $scope.saveBoards = function() {
-      // update user in database 
-
-    };
-
   });
 
 });
 
 var testdb2 = {
-  email: "test@test.com",
-  first_name: "test@test.com",
-  password: "test@test.com",
+  email: "me@site.com",
+  first_name: "Matt",
+  password: "password",
   boards: [{
-    title: "Cool Board",
+    title: "Welcome",
     position: 1,
     sounds: [{
       position: 1,
       accent: 'UK English Female',
-      speaktext: 'testing testing 1 2 5',
+      speaktext: 'Hello, and welcome to your own personal text to speech soundboard.',
       options: {
         pitch: 1,
         rate: 1,
@@ -88,17 +100,17 @@ var testdb2 = {
       }
     }, {
       position: 2,
-      accent: 'Japanese Female',
-      speaktext: 'hello hello hello',
+      accent: 'UK English Female',
+      speaktext: 'Powered by Responsive Voice JS and Angular Material',
       options: {
-        pitch: 1.5,
-        rate: 1.5,
+        pitch: 1,
+        rate: 1,
         volume: 1
       }
     }, {
       position: 3,
       accent: 'UK English Female',
-      speaktext: 'testing testing 1 2 5',
+      speaktext: 'Add a button by filling in the form below.',
       options: {
         pitch: 1,
         rate: 1,
@@ -107,50 +119,46 @@ var testdb2 = {
     }, {
       position: 4,
       accent: 'Japanese Female',
-      speaktext: 'hello hello hello',
+      speaktext: 'Change the accent',
       options: {
-        pitch: 1.5,
-        rate: 1.5,
+        pitch: 1,
+        rate: 1,
         volume: 1
       }
     }, {
       position: 5,
       accent: 'UK English Female',
-      speaktext: 'testing testing 1 2 5',
+      speaktext: 'Adjust the pitch with convenient sliders.',
       options: {
-        pitch: 1,
+        pitch: 1.5,
         rate: 1,
         volume: 1
       }
     }, {
       position: 6,
-      accent: 'Japanese Female',
-      speaktext: 'hello hello hello',
-      options: {
-        pitch: 1.5,
-        rate: 1.5,
-        volume: 1
-      }
-    }]
-  }, {
-    title: "Rad Board",
-    position: 2,
-    sounds: [{
-      position: 1,
       accent: 'UK English Female',
-      speaktext: 'muwahaha 1 2 5',
+      speaktext: 'have fun with the rate',
       options: {
         pitch: 1,
-        rate: 1,
+        rate: 0.3,
         volume: 1
       }
     }, {
-      position: 2,
-      accent: 'Japanese Female',
-      speaktext: 'hello this is an accent',
+      position: 7,
+      accent: 'UK English Female',
+      speaktext: 'also control the volume',
       options: {
-        pitch: 1.5,
-        rate: 1.5,
+        pitch: 1,
+        rate: 1,
+        volume: 0.1
+      }
+    }, {
+      position: 8,
+      accent: 'UK English Female',
+      speaktext: 'You can add new boards as well!',
+      options: {
+        pitch: 1,
+        rate: 1,
         volume: 1
       }
     }]

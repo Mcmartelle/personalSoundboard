@@ -14,8 +14,15 @@
           </md-select>
         </md-input-container>
         <md-input-container class="md-block">
-          <label>Pitch</label>
-          <input type="number" name="pitch" ng-model="livePhrase.options.pitch" min="0" max="2" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.1" />
+          <div layout="column" layout-align="start center">
+            <div>
+              <label>Pitch</label>
+              <input class="md-block" type="number" name="pitch" ng-model="livePhrase.options.pitch" min="0" max="2" step="0.1" />
+              <p class="md-title"></p>
+              <md-slider class="md-warn" min="0" max="2" step="0.1" ng-model="livePhrase.options.pitch" aria-label="pitch slider" id="pitch-slider">
+              </md-slider>
+            </div>
+          </div>
           <div ng-messages="">
             <!-- ng-message weren't hiding automatically. reverted to ng-show. kept ng-messages for styling.  -->
             <div ng-show="phraseForm.pitch.$error.min">
@@ -30,8 +37,15 @@
           </div>
         </md-input-container>
         <md-input-container class="md-block">
-          <label>Rate</label>
-          <input type="number" name="rate" ng-model="livePhrase.options.rate" min="0" max="1.5" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.1" />
+          <div layout="column" layout-align="start center">
+            <div>
+              <label>Rate</label>
+              <input type="number" name="rate" ng-model="livePhrase.options.rate" min="0" max="1.5" step="0.1" />
+              <p class="md-title"></p>
+              <md-slider class="md-warn" min="0" max="1.5" step="0.1" ng-model="livePhrase.options.rate" aria-label="rate slider" id="rate-slider">
+              </md-slider>
+            </div>
+          </div>
           <div ng-messages="">
             <!-- ng-message weren't hiding automatically. reverted to ng-show. kept ng-messages for styling.  -->
             <div ng-show="phraseForm.rate.$error.min">
@@ -46,8 +60,15 @@
           </div>
         </md-input-container>
         <md-input-container class="md-block">
-          <label>Volume</label>
-          <input type="number" name="volume" ng-model="livePhrase.options.volume" min="0" max="1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.1" />
+          <div layout="column" layout-align="start center">
+            <div>
+              <label>Volume</label>
+              <input type="number" name="volume" ng-model="livePhrase.options.volume" min="0" max="1" step="0.1" />
+              <p class="md-title"></p>
+              <md-slider class="md-warn" min="0" max="1" step="0.1" ng-model="livePhrase.options.volume" aria-label="volume slider" id="volume-slider">
+              </md-slider>
+            </div>
+          </div>
           <div ng-messages="">
             <!-- ng-message weren't hiding automatically. reverted to ng-show. kept ng-messages for styling.  -->
             <div ng-show="phraseForm.volume.$error.min">

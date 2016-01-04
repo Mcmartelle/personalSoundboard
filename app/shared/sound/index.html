@@ -13,10 +13,12 @@
     <span ng-if="sound.options.volume">Volume <md-button aria-label="volume" class="md-fab md-warn"><span class="md-title" ng-bind="sound.options.volume"></span></md-button>
     </span>
   </md-card-content>
-  <md-card-actions layout="row" layout-align="end center">
+  <md-card-actions layout="row" layout-align="start center">
     <md-button class="btn btnPlay" aria-label="play" ng-click="play(sound)">PLAY</md-button>
     <md-button class="btn btnPause" aria-label="pause" ng-click="pause()">PAUSE</md-button>
     <md-button class="btn btnResume" aria-label="resume" ng-click="resume()">RESUME</md-button>
     <md-button class="btn btnStop" aria-label="stop" ng-click="stop()">STOP</md-button>
+    <md-button ng-disabled="true" aria-label="blank"></md-button>
+    <md-button class="btn btnAdd" aria-label="remove" ng-click="removeSound(sound, board.sounds)">REMOVE</md-button>
   </md-card-actions>
 </md-card>

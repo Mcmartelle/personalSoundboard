@@ -1,5 +1,7 @@
-define(['app'], function(app) {
-  app.directive('user', function($http) {
+define([
+  'app'
+], function(app) {
+  app.directive('user', function($http, $location) {
     return {
       restrict: 'E',
       controller: 'userController',
@@ -15,30 +17,23 @@ define(['app'], function(app) {
       }
     };
   });
-  app.controller('userController', function($scope, $css, $http) {
+  app.controller('userController', function($scope, $css, $http, $rootScope) {
     $css.bind({
       href: 'app/shared/user/index.css'
     }, $scope);
 
-    this.test = function() {
-      console.log("in test");
-      $http({
-        url: 'https://127.0.0.1:1337/api/data',
-        method: "GET",
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8'
-        }
-      }).then(
-        function successCallback(response) {
-          console.log("success");
-          console.log(response);
+    var changeLocation = function(url, forceReload) {
+      $scope = $scope || angular.element(document).scope();
+      if (forceReload || $scope.$$phase) {
+        window.location = url;
+      } else {
+        //only use this if you want to replace the history stack
+        //$location.path(url).replace();
 
-        },
-        function errorCallback(response) {
-          console.log("error");
-          console.log(response);
-        });
+        //this this if you want to change the URL and add it to the history stack
+        $location.path(url);
+        $scope.$apply();
+      }
     };
 
     this.register = function(user) {
@@ -65,10 +60,10 @@ define(['app'], function(app) {
 
     this.login = function(user) {
       console.log(user);
+
       $http({
         url: 'https://127.0.0.1:1337/api/users/' + user.email,
-        method: "POST",
-        data: user,
+        method: "GET",
         withCredentials: true,
         headers: {
           'Content-Type': 'application/json; charset=utf-8'
@@ -76,8 +71,12 @@ define(['app'], function(app) {
       }).then(
         function successCallback(response) {
           console.log("success");
-          console.log(response);
-
+          console.log(response.data)
+          if (response.data) {
+            $rootScope.user = response.data;
+            console.log($rootScope.user);
+            changeLocation('/#/soundboard');
+          }
         },
         function errorCallback(response) {
           console.log("error");

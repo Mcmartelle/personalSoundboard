@@ -1,15 +1,12 @@
 require.config({
   paths: {
     'responsive-voice': 'https://code.responsivevoice.org/responsivevoice',
-    // 'soundboard': 'app/components/soundboard/index'
   }
 });
 
 define([
   'app',
   'responsive-voice',
-  // 'soundboard'
-
 ], function(app) {
   app.directive('sound', function() {
     return {
@@ -33,12 +30,26 @@ define([
         };
 
         scope.addPhrase = function(phrase, sounds) {
+          var maxPosition = 0;
+          var idx;
+          for (idx in sounds) {
+            if (sounds[idx].position > maxPosition) {
+              maxPosition = sounds[idx].position;
+            }
+          }
+          phrase.position = maxPosition + 1;
+
           sounds.push(phrase);
           scope.livePhrase = {
             //default accent for responsiveVoiceJS
             accent: "UK English Female"
           };
           return sounds;
+        };
+
+        scope.removeSound = function(sound, sounds) {
+          var index = sounds.indexOf(sound);
+          sounds.splice(index, 1);
         };
 
         scope.play = function(text) {
